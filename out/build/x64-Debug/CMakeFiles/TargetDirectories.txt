@@ -1,0 +1,4 @@
+C:/Users/student/Downloads/OneDrive_1_11-4-2025/out/build/x64-Debug/CMakeFiles/engine.dir
+C:/Users/student/Downloads/OneDrive_1_11-4-2025/out/build/x64-Debug/CMakeFiles/demo.dir
+C:/Users/student/Downloads/OneDrive_1_11-4-2025/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/student/Downloads/OneDrive_1_11-4-2025/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
