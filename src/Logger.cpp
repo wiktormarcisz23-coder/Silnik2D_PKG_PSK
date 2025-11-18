@@ -34,11 +34,9 @@ void Logger::write(const char* level, const std::string& msg) {
     std::scoped_lock lk(mtx_);
     std::string line = "[" + std::string(level) + "][" + ts.str() + "] " + msg + "\n";
 
-    // Konsola
     if (std::string(level) == "ERROR") std::cerr << line;
     else std::cout << line;
 
-    // Plik
     if (file_.is_open()) {
         file_ << line;
         file_.flush();

@@ -45,18 +45,14 @@ private:
     sf::RenderWindow window_;
     bool             running_ = false;
 
-    // timing
     sf::Clock frameClock_;
 
-    // tło
     sf::Texture               clearTexture_;
-    std::optional<sf::Sprite> clearSprite_;   // SFML 3: brak domyślnego konstruktora
+    std::optional<sf::Sprite> clearSprite_;
     bool                      hasClearTexture_ = false;
 
-    // input
     InputState input_{};
 
-    // pomocnicze
     sf::VideoMode pickVideoMode_() const;
 
     void processEvents_();

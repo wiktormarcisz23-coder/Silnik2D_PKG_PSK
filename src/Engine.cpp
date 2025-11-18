@@ -26,13 +26,12 @@ bool Engine::init() {
     try {
         const auto mode = pickVideoMode_();
 
-        // SFML 3: dekoracje w sf::Style, tryb (windowed/fullscreen) w sf::State
         auto style = cfg_.fullscreen
-            ? sf::Style::None            // fullscreen ignoruje dekoracje
+            ? sf::Style::None
             : (sf::Style::Titlebar | sf::Style::Close);
         auto state = cfg_.fullscreen ? sf::State::Fullscreen : sf::State::Windowed;
 
-        window_.create(mode, cfg_.title, style, state); // ← 4. argument to sf::State
+        window_.create(mode, cfg_.title, style, state);
         if (!window_.isOpen()) {
             Logger::instance().error("Failed to create window.");
             return false;
@@ -130,15 +129,12 @@ void Engine::shutdown() {
 }
 
 void Engine::processEvents_() {
-    // 🧠 SFML 3: pollEvent() zwraca std::optional<sf::Event>, używamy .getIf<T>()
     while (auto e = window_.pollEvent()) {
-        // Zamknięcie okna
         if (e->is<sf::Event::Closed>()) {
             Logger::instance().info("Window close requested.");
             stop();
         }
 
-        // Zmiana rozmiaru
         if (auto r = e->getIf<sf::Event::Resized>()) {
             sf::FloatRect visible{
                 {0.f, 0.f},
@@ -147,7 +143,6 @@ void Engine::processEvents_() {
             window_.setView(sf::View(visible));
         }
 
-        // Klawiatura
         if (cfg_.enableKeyboard) {
             if (auto k = e->getIf<sf::Event::KeyPressed>()) {
                 switch (k->code) {
@@ -169,7 +164,6 @@ void Engine::processEvents_() {
             }
         }
 
-        // Mysz
         if (cfg_.enableMouse) {
             if (auto m = e->getIf<sf::Event::MouseMoved>()) {
                 input_.mousePos = { m->position.x, m->position.y };
